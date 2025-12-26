@@ -20,7 +20,7 @@ resilience4j:
         failureRateThreshold: 50
         minimumNumberOfCalls: 5
         automaticTransitionFromOpenToHalfOpenEnabled: true
-        waitDurationInOpenState: 5s
+        waitDurationInOpenState: 10s
         permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
         slidingWindowType: COUNT_BASED
@@ -29,8 +29,8 @@ resilience4j:
   retry:
     instances:
       userService:
-        maxRetryAttempts: 5
-        waitDuration: 10s
+        maxRetryAttempts: 3
+        waitDuration: 5s
 
 
 
