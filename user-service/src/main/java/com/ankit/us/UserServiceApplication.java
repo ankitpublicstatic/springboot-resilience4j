@@ -36,8 +36,8 @@ public class UserServiceApplication {
 
 
   @GetMapping("/displayOrders")
-  @CircuitBreaker(name = USER_SERVICE, fallbackMethod = "getAllAvailableProducts")
   @Retry(name = USER_SERVICE, fallbackMethod = "getAllAvailableProductsRetry")
+  @CircuitBreaker(name = USER_SERVICE, fallbackMethod = "getAllAvailableProducts")
   public List<OrderDTO> displayOrders(@RequestParam("category") String category) {
     String url = category == null ? BASEURL : BASEURL + "/" + category;
     System.out.println("retry method called " + ++attempt + " times " + " at " + new Date());
